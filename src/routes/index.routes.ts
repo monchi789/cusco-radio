@@ -20,7 +20,7 @@ router.get('/blogs', (req, res) => {
         fetch(url)
         .then(res => res.json())
         .then(data => res.render('blogs', {post: data}));
-        
+
     } catch (error) {
         console.log(error);
     }
