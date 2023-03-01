@@ -2,6 +2,7 @@ import express from 'express';
 import payload from 'payload';
 import indexRoutes from "./routes/index.routes";
 import path from 'path';
+import cors from "cors";
 import { fileURLToPath } from 'url';
 
 
@@ -18,6 +19,11 @@ app.use(indexRoutes);
 
 // Set the CSS
 app.use(express.static(path.join(__dirname, 'public')))
+
+// Set cors
+app.use(cors({
+  origin: "*",
+}));
 
 const start = async () => {
   // Initialize Payload
