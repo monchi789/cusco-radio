@@ -8,6 +8,7 @@ import Media from './collections/Media';
 
 export default buildConfig({
   serverURL: 'http://localhost:3000',
+  cors: '*',
   admin: {
     user: Users.slug,
   },
