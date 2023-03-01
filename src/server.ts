@@ -20,10 +20,22 @@ app.use(indexRoutes);
 // Set the CSS
 app.use(express.static(path.join(__dirname, 'public')))
 
+// Configuration the CORS
+const whitelist = ['http://67.207.86.80:3000', 'http://67.207.86.80'];
+
+const corsOptions = {
+  credentials: true, // This is important.
+  origin: (origin, callback) => {
+    if(whitelist.includes(origin)){
+      return callback(null, true)
+    }
+    
+    callback(new Error('Not allowed by CORS'));
+  }
+}
+
 // Set cors
-app.use(cors({
-  origin: "*",
-}));
+app.use(cors(corsOptions));
 
 const start = async () => {
   // Initialize Payload
